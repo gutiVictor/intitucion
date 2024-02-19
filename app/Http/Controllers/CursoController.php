@@ -12,6 +12,7 @@ class CursoController extends Controller
      */
     public function index()
     {
+        return Curso::all();
         //
     }
 
@@ -28,14 +29,18 @@ class CursoController extends Controller
      */
     public function store(Request $request)
     {
+        Curso::create($request->all());
+        return ['created'];
         //
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Curso $curso)
+    public function show($id)
     {
+        return Curso::find($id);
+        return Curso::find($id);
         //
     }
 
@@ -50,16 +55,24 @@ class CursoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Curso $curso)
+    public function update(Request $request, $id)
     {
+        $curso =  Curso::find($id);
+        $curso->update($request->all());
+
+         return ['Updated'];
         //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Curso $curso)
+    public function destroy($id)
     {
+        $curso = Curso::find($id);
+        $curso->delete($id);
+
+         return ['deleted'];
         //
     }
 }

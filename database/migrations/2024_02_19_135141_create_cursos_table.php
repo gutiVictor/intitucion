@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('cursos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
+            // Utilizamos un enum para asegurar que solo se permitan los valores definidos ('Matematicas', 'Algebra', 'Fisica','Español','Ingles','Biologia')
+            $table->enum('curso', ['Matematicas', 'Algebra', 'Fisica','Español','Ingles','Biologia'])->comment('Opciones de Cursos');
             $table->timestamps();
         });
     }

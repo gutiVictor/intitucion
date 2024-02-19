@@ -17,8 +17,10 @@ class CursoFactory extends Factory
     public function definition(): array
     {
         return [
-            'nombre' => $this->faker->name(),
+           /*  'nombre' => $this->faker->name(), */
             //
+
+            'curso' => $this->faker->randomElement(['Matematicas', 'Algebra', 'Fisica','Español','Ingles','Biologia']),
         ];
     }
 }
