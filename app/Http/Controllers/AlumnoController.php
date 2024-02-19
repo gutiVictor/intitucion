@@ -12,6 +12,7 @@ class AlumnoController extends Controller
      */
     public function index()
     {
+        return Alumno::all();
         //
     }
 
@@ -28,14 +29,19 @@ class AlumnoController extends Controller
      */
     public function store(Request $request)
     {
+
+        Alumno::create($request->all());
+        return ['created'];
         //
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Alumno $alumno)
+    public function show($id)
     {
+        return Alumno::find($id);
+        return Alumno::find($id);
         //
     }
 
@@ -50,16 +56,26 @@ class AlumnoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Alumno $alumno)
+    public function update(Request $request, $id)
     {
+
+        $docente =  Alumno::find($id);
+        $docente->update($request->all());
+
+         return ['Updated'];
         //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Alumno $alumno)
+    public function destroy($id)
     {
+
+        $docente = Alumno::find($id);
+        $docente->delete($id);
+
+         return ['deleted'];
         //
     }
 }
